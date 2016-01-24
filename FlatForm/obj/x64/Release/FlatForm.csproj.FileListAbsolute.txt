@@ -1,0 +1,8 @@
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\bin\x64\Release\FlatForm.exe
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\bin\x64\Release\FlatForm.pdb
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\x64\Release\FlatForm.ExampleForm.resources
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\x64\Release\FlatForm.FlatForm.resources
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\x64\Release\FlatForm.Properties.Resources.resources
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\x64\Release\FlatForm.csproj.GenerateResource.Cache
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\x64\Release\FlatForm.exe
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\x64\Release\FlatForm.pdb

@@ -1,0 +1,9 @@
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\bin\Debug\FlatForm.exe
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\bin\Debug\FlatForm.pdb
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.csprojResolveAssemblyReference.cache
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.Properties.Resources.resources
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.csproj.GenerateResource.Cache
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.exe
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.pdb
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.FlatStyleForm.resources
+F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\ExampleForm.ExampleForm.resources
