@@ -1,0 +1,1 @@
+csc /target:library /out:bin/dll/libflatform.dll FlatForm.cs

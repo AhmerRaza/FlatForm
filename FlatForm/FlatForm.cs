@@ -304,6 +304,12 @@ namespace FlatForm
             LayoutFix();
         }
 
+        private void OnResize(object sender, EventArgs e)
+        {
+            LayoutFix();
+            this.Refresh();
+        }
+
         private void OnTextChanged(object sender, EventArgs e)
         {
             title.Text = this.Text;
@@ -437,6 +443,7 @@ namespace FlatForm
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OnMouseMove);
+            this.Resize += new System.EventHandler(this.OnResize);
 
             if (ae)
             {
