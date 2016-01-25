@@ -24,46 +24,6 @@ namespace FlatForm
             LayoutInit();
         }
 
-        #region Disposer
-        private System.ComponentModel.IContainer components = null;
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        } 
-        #endregion
-
-        #region Controls
-        public System.Windows.Forms.Panel bar;
-        private System.Windows.Forms.Label title;
-        public System.Windows.Forms.Button minButton;
-        public System.Windows.Forms.Button closeButton;
-        public System.Windows.Forms.Button maxButton;
-        private System.Windows.Forms.PictureBox icon; 
-        #endregion
-
-        #region Private Variables
-        private Point mousePoint;
-        private bool ae;
-        private int oldW, oldH;
-        private Point oldP;
-        private const int WM_SYSCOMMAND = 0x0112;
-        private const int SC_MOVE = 0xF010;
-        private const int SC_SIZE = 0xF000;
-        private const int CS_DROPSHADOW = 0x00020000;
-        private const int WS_MINIMIZEBOX = 0x20000;
-        private const int CS_DBLCLKS = 0x8;
-        private const int WM_NCPAINT = 0x0085;
-        private const int WM_NCCALCSIZE = 0x0083;
-        private const int WM_ACTIVATEAPP = 0x001C;
-        private const int HTCLIENT = 0x1;
-        private const int HTCAPTION = 0x2; 
-        #endregion
-
         #region DllImports
         [DllImport("User32.dll", EntryPoint = "SendMessage")]
         extern static int SendMessageGetTextLength(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
@@ -98,7 +58,34 @@ namespace FlatForm
         public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
 
         [DllImport("dwmapi.dll")]
-        public static extern int DwmIsCompositionEnabled(ref int pfEnabled); 
+        public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
+        #endregion
+
+        #region Controls
+        public System.Windows.Forms.Panel bar;
+        private System.Windows.Forms.Label title;
+        private System.Windows.Forms.Button minButton;
+        private System.Windows.Forms.Button closeButton;
+        private System.Windows.Forms.Button maxButton;
+        private System.Windows.Forms.PictureBox icon; 
+        #endregion
+
+        #region Private Variables
+        private Point mousePoint;
+        private bool ae;
+        private int oldW, oldH;
+        private Point oldP;
+        private const int WM_SYSCOMMAND = 0x0112;
+        private const int SC_MOVE = 0xF010;
+        private const int SC_SIZE = 0xF000;
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WS_MINIMIZEBOX = 0x20000;
+        private const int CS_DBLCLKS = 0x8;
+        private const int WM_NCPAINT = 0x0085;
+        private const int WM_NCCALCSIZE = 0x0083;
+        private const int WM_ACTIVATEAPP = 0x001C;
+        private const int HTCLIENT = 0x1;
+        private const int HTCAPTION = 0x2;
         #endregion
 
         #region Base Functions For Aero Features
@@ -281,7 +268,10 @@ namespace FlatForm
                     this.Width = oldW;
                     this.Height = oldH;
                     this.Location = oldP;
-                    FormBorderStyle = FormBorderStyle.FixedSingle;
+                    if(isHigher7())
+                        FormBorderStyle = FormBorderStyle.FixedSingle;
+                    else
+                        FormBorderStyle = FormBorderStyle.None;
                     this.WindowState = FormWindowState.Normal;
                     break;
             }
@@ -407,7 +397,7 @@ namespace FlatForm
             this.maxButton.Name = "maxButton";
             this.maxButton.Size = new System.Drawing.Size(39, bar.Height);
             this.maxButton.TabIndex = 4;
-            this.maxButton.Text = ConvertFromCode(StartState == FormWindowState.Maximized ? "E158" : "E210");
+            this.maxButton.Text = ConvertFromCode(StartState == FormWindowState.Maximized ? "25A3" : "25AD");
             this.maxButton.UseVisualStyleBackColor = false;
             this.maxButton.Click += new System.EventHandler(this.maxButton_Click);
             // 
@@ -425,15 +415,12 @@ namespace FlatForm
             this.minButton.Name = "minButton";
             this.minButton.Size = new System.Drawing.Size(39, bar.Height);
             this.minButton.TabIndex = 2;
-            this.minButton.Text = ConvertFromCode("E108");
+            this.minButton.Text = ConvertFromCode("FF0D");
             this.minButton.UseVisualStyleBackColor = false;
             this.minButton.Click += new System.EventHandler(this.minButton_Click);
             // 
             // FlatForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 256);
+            //
             this.ControlBox = false;
             this.Controls.Add(this.bar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -449,8 +436,10 @@ namespace FlatForm
             {
                 if (StartState == FormWindowState.Maximized)
                     FormBorderStyle = FormBorderStyle.None;
-                else
-                    FormBorderStyle = FormBorderStyle.FixedSingle;
+                else if(isHigher7())
+                        FormBorderStyle = FormBorderStyle.FixedSingle;
+                    else
+                        FormBorderStyle = FormBorderStyle.None;
                 ControlBox = false;
                 MinimizeBox = false;
                 MaximizeBox = false;
@@ -475,10 +464,13 @@ namespace FlatForm
 
         private void LayoutFix()
         {
-            if (this.Height < bar.Height)
-                this.Height = bar.Height;
-            if (this.Width < title.Left + title.Width + BarSeparate + minButton.Width + BarSeparate + maxButton.Width + BarSeparate + closeButton.Width + BarSeparate)
-                this.Width = title.Left + title.Width + BarSeparate + minButton.Width + BarSeparate + maxButton.Width + BarSeparate + closeButton.Width + BarSeparate;
+            if(this.WindowState != FormWindowState.Minimized)
+            {
+                if (this.Height < bar.Height)
+                    this.Height = bar.Height;
+                if (this.Width < title.Left + title.Width + BarSeparate + minButton.Width + BarSeparate + maxButton.Width + BarSeparate + closeButton.Width + BarSeparate)
+                    this.Width = title.Left + title.Width + BarSeparate + minButton.Width + BarSeparate + maxButton.Width + BarSeparate + closeButton.Width + BarSeparate;
+            }
             bar.Left = 0;
             bar.Width = this.Width;
             if (EnableIcon)
@@ -495,7 +487,7 @@ namespace FlatForm
             closeButton.Left = this.Width - closeButton.Width - BarSeparate;
             maxButton.Left = closeButton.Left - closeButton.Width - BarSeparate;
             minButton.Left = maxButton.Left - maxButton.Width - BarSeparate;
-            maxButton.Text = ConvertFromCode(this.WindowState == FormWindowState.Maximized ? "E158" : "E210");
+            maxButton.Text = ConvertFromCode(this.WindowState == FormWindowState.Maximized ? "25A3" : "25AD");
             title.Text = this.Text;
         } 
         #endregion
@@ -520,7 +512,36 @@ namespace FlatForm
 
             return canvas;
         }
+
+        private bool isHigher7()
+        {
+            System.OperatingSystem os = System.Environment.OSVersion;
+            
+            if (os.Platform == PlatformID.Win32NT)
+            {
+                if (os.Version.Major >= 6)
+                {
+                    if (os.Version.Minor >= 2)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
         #endregion
 
+        #region Disposer
+        private System.ComponentModel.IContainer components = null;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+        #endregion
     }
 }

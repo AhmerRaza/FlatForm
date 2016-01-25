@@ -7,3 +7,12 @@ F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.exe
 F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.pdb
 F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.FlatStyleForm.resources
 F:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\ExampleForm.ExampleForm.resources
+G:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.exe
+G:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.pdb
+G:\Works\Visual Studio\Projects\FlatForm\FlatForm\bin\Debug\FlatForm.exe
+G:\Works\Visual Studio\Projects\FlatForm\FlatForm\bin\Debug\FlatForm.pdb
+G:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.csprojResolveAssemblyReference.cache
+G:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\ExampleForm.ExampleForm.resources
+G:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.FlatStyleForm.resources
+G:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.Properties.Resources.resources
+G:\Works\Visual Studio\Projects\FlatForm\FlatForm\obj\Debug\FlatForm.csproj.GenerateResource.Cache
