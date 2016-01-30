@@ -13,6 +13,8 @@ namespace FlatForm
 {
     public partial class FlatStyleForm : Form
     {
+        public static string version = "1.1";
+
         //Settings
         public FormWindowState StartState { get; set; }
         public bool EnableIcon { get; set; }
@@ -449,12 +451,14 @@ namespace FlatForm
                 FormBorderStyle = FormBorderStyle.None;
             oldW = this.Width;
             oldH = this.Height;
+            oldP = this.Location;
             if (StartState == FormWindowState.Maximized)
                 this.WindowState = FormWindowState.Maximized;
             else if (StartState == FormWindowState.Minimized)
                 this.WindowState = FormWindowState.Minimized;
 
             LayoutFix();
+
             this.Visible = true;
             this.bar.ResumeLayout(false);
             this.bar.PerformLayout();

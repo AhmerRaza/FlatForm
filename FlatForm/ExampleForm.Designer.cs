@@ -40,7 +40,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(559, 240);
-            this.Location = new System.Drawing.Point(0, 0);
+            this.Location = new System.Drawing.Point(100, 100);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ExampleForm";

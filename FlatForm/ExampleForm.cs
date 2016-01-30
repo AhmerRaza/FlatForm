@@ -13,6 +13,7 @@ namespace ExampleForm
         public ExampleForm()
         {
             InitializeComponent();
+            Console.WriteLine("FlatForm Version: "+FlatForm.FlatStyleForm.version);
         }
     }
 }
